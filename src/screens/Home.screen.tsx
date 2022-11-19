@@ -1,16 +1,34 @@
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
-
+import {StyleSheet, View} from 'react-native';
+import MoodPicker from '../components/MoodPicker';
+import {theme} from '../theme';
+import {useAppContext} from '../App.provider';
 export const Home: React.FC = () => {
+  const appContext = useAppContext();
   return (
     <View style={styles.container}>
-      <Text>Home</Text>
+      <MoodPicker onSelect={appContext.handleSelectMood} />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    // alignItems: 'center',
     flex: 1,
+    justifyContent: 'center',
+  },
+  containerStyle: {
+    justifyContent: 'center',
+  },
+  textStyle: {
+    justifyContent: 'flex-end',
+    margin: 10,
+    marginTop: 10,
+    position: 'relative',
+  },
+  moodDate: {
+    textAlign: 'center',
+    color: theme.colorLavender,
   },
 });
