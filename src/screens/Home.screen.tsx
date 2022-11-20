@@ -3,11 +3,15 @@ import {StyleSheet, View} from 'react-native';
 import MoodPicker from '../components/MoodPicker';
 import {theme} from '../theme';
 import {useAppContext} from '../App.provider';
+import {MoodItemRow} from '../components/MoodItemRow';
 export const Home: React.FC = () => {
   const appContext = useAppContext();
   return (
     <View style={styles.container}>
       <MoodPicker onSelect={appContext.handleSelectMood} />
+      {appContext.selectedMood && (
+        <MoodItemRow item={appContext.selectedMood} />
+      )}
     </View>
   );
 };
