@@ -2,6 +2,12 @@ import React from 'react';
 import {View, Text, StyleSheet, Pressable, Image} from 'react-native';
 import {MoodOptionType} from '../types';
 import {theme} from '../theme';
+import Reanimated, {
+  useAnimatedStyle,
+  withTiming,
+} from 'react-native-reanimated';
+
+const ReanimatedPressable = Reanimated.createAnimatedComponent(Pressable);
 
 const moodOptions: MoodOptionType[] = [
   {emoji: '🧑‍💻', description: 'studious'},
@@ -25,6 +31,13 @@ const MoodPicker: React.FC<MoodPickerProps> = ({onSelect}) => {
       setHasSelected(true);
     }
   }, [onSelect, selectMood]);
+  const buttonStyle = useAnimatedStyle(
+    () => ({
+      opacity: selectMood ? withTiming(1) : withTiming(0.5),
+      transform: [{scale: selectMood ? withTiming(1) : 0.8}],
+    }),
+    [selectMood],
+  );
   if (hasSelected) {
     return (
       <View style={styles.container}>
@@ -62,9 +75,11 @@ const MoodPicker: React.FC<MoodPickerProps> = ({onSelect}) => {
           </View>
         ))}
       </View>
-      <Pressable style={styles.button} onPress={handleSelect}>
+      <ReanimatedPressable
+        style={[styles.button, buttonStyle]}
+        onPress={handleSelect}>
         <Text style={styles.buttonText}>Choose</Text>
-      </Pressable>
+      </ReanimatedPressable>
     </View>
   );
 };
