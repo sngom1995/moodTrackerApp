@@ -70,7 +70,7 @@ const MoodPicker: React.FC<MoodPickerProps> = ({onSelect}) => {
 };
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'column',
+    backgroundColor: 'rgba(0,0,0,0.2)',
     marginLeft: 10,
     marginRight: 10,
     justifyContent: 'center',
@@ -78,10 +78,11 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: theme.colorPurple,
     borderRadius: 10,
-    flexWrap: 'nowrap',
+    height: 220,
   },
   image: {
     alignSelf: 'center',
+    resizeMode: 'contain',
   },
   moodText: {
     fontSize: 24,
@@ -109,16 +110,19 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 10,
     textAlign: 'center',
+    fontFamily: theme.fontFamilyRegular,
   },
   wText: {
-    color: 'black',
+    color: theme.colorWhite,
     fontWeight: 'bold',
     fontSize: 20,
     textAlign: 'center',
+    fontFamily: theme.fontFamilyBold,
   },
   textWelcome: {
     paddingTop: 25,
     fontWeight: 'bold',
+    fontFamily: theme.fontFamilyRegular,
   },
   button: {
     height: 30,
@@ -138,6 +142,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
     color: theme.colorWhite,
+    fontFamily: theme.fontFamilyRegular,
   },
 });
 export default MoodPicker;

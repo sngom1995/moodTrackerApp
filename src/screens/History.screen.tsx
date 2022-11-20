@@ -9,7 +9,7 @@ export const History: React.FC = () => {
     <ScrollView style={styles.container}>
       {appContext.moodList.map(item => (
         <View key={item.timestamp}>
-           <MoodItemRow item={item} />
+          <MoodItemRow item={item} />
         </View>
       ))}
     </ScrollView>
